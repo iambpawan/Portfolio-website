@@ -296,6 +296,50 @@ nav ul li a:hover {
       margin-bottom: 50px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: background 0.3s ease;
+      z-index: 5;
+    }
+
+    /* Date box anchored to the timeline element (center line) */
+    .vertical-timeline-element > .timeline-date {
+      /* use a CSS variable for horizontal offset so animations/hover keep same base X offset */
+      --date-x: 0px;
+      position: absolute;
+      top: 18px; /* fixed pixel offset below icon */
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #555;
+      white-space: nowrap;
+      background: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      z-index: 12;
+      opacity: 0;
+      animation: date-appear 360ms ease forwards;
+    }
+
+    .vertical-timeline-element:nth-child(odd) > .timeline-date {
+      left: 45%;
+    }
+
+    .vertical-timeline-element:nth-child(even) > .timeline-date {
+      left: 55%;
+    }
+
+    /* For left-side cards (odd), place date just right of center line (use positive --date-x)
+       For right-side cards (even), set --date-x to a negative calc so it sits left of center */
+    .vertical-timeline-element:nth-child(odd) > .timeline-date {
+      --date-x: 32px;
+    }
+
+    .vertical-timeline-element:nth-child(even) > .timeline-date {
+      --date-x: calc(-100% - 32px);
+    }
+
+    .vertical-timeline-element:hover > .timeline-date {
+      color: #1e88e5;
+      transform: translateX(var(--date-x)) translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     }
 
     .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
@@ -345,22 +389,29 @@ nav ul li a:hover {
     .timeline-date-right,
     .timeline-date-left {
       position: absolute;
-      top: 15px;
+      top: 50%;
+      left: 50%; /* anchor to center line */
       font-size: 0.9rem;
-	  font-weight: bold; 
+      font-weight: bold;
       color: #555;
       white-space: nowrap;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease, transform 0.15s ease;
+      background: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      z-index: 12;
+      transform: translate(-120%, -50%); /* default place left of center */
     }
 
+    /* Right-side dates: move a bit right of center so they sit between center and right card */
     .timeline-date-right {
-      left: 65%;
-      transform: translateX(-50%);
+      transform: translate(20%, -50%);
     }
 
+    /* Left-side dates: keep left of center but slightly closer to card */
     .timeline-date-left {
-      right: 65%;
-      transform: translateX(50%);
+      transform: translate(-120%, -50%);
     }
 
     /* Hover effect applied to the whole timeline element */
@@ -374,12 +425,12 @@ nav ul li a:hover {
 
     .vertical-timeline-element:hover .timeline-date-right {
       color: #1e88e5;
-      transform: scale(1.1);
+      transform: translate(20%, -50%) scale(1.08);
     }
 
     .vertical-timeline-element:hover .timeline-date-left {
       color: #1e88e5;
-      transform: scale(1.1);
+      transform: translate(-120%, -50%) scale(1.08);
     }
 
     .vertical-timeline-element-content h3 {
@@ -405,6 +456,59 @@ nav ul li a:hover {
       font-size: 0.8rem;
       color: #888;
     }
+
+/* Responsive tweaks: adjust date-box offsets at different viewport widths */
+@media (min-width: 1200px) {
+  .timeline-date-left {
+    transform: translate(-160%, -50%); /* further left on very wide screens */
+  }
+  .timeline-date-right {
+    transform: translate(40%, -50%); /* further right on very wide screens */
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .timeline-date-left {
+    transform: translate(-140%, -50%);
+  }
+  .timeline-date-right {
+    transform: translate(32%, -50%);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .timeline-date-left {
+    transform: translate(-110%, -50%);
+  }
+  .timeline-date-right {
+    transform: translate(24%, -50%);
+  }
+}
+
+/* Very wide screens: use fixed pixel offsets so dates never overlap cards */
+@media (min-width: 1400px) {
+  /* increase wide-screen fixed offset by +10px (was 140 -> now 150) */
+  .vertical-timeline-element:nth-child(odd) > .timeline-date {
+    --date-x: 150px;
+    transform: translateX(var(--date-x)) translateY(-50%);
+  }
+  .vertical-timeline-element:nth-child(even) > .timeline-date {
+    --date-x: calc(-100% - 150px);
+    transform: translateX(var(--date-x)) translateY(-50%);
+  }
+}
+
+/* Appear animation for date boxes */
+@keyframes date-appear {
+  from {
+    opacity: 0;
+    transform: translateX(var(--date-x)) translateY(-40%) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(var(--date-x)) translateY(-50%) scale(1);
+  }
+}
 	
         /* Footer */
         footer {
@@ -498,34 +602,22 @@ nav ul li a:hover {
   }
 
 
-  .timeline-date-left {
-    position: relative;
-    top: 10px;
-    right: 0%;
+  .vertical-timeline-element > .timeline-date {
+    position: static !important;
     text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    display: block;
-	transform: none !important;
-	transition: none !important;
-	
-	
-  }
-
-  .timeline-date-right {
-    position: relative;
-    top: 10px;
-    left: 0%;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    display: block;
-	transform: none !important;
-	transition: none !important;
-	
-	
+    width: auto;
+    display: inline-block;
+    margin: 0 auto 22px auto;
+    font-size: 1rem;
+    transition: none !important;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    white-space: nowrap;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
   }
 
   .vertical-timeline::before {
