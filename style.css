@@ -266,33 +266,38 @@ nav ul li a:hover {
       z-index: 5;
     }
 
-    /* Date box anchored to the timeline element */
+    /* Date box anchored to the timeline element (center line) */
     .vertical-timeline-element > .timeline-date {
+      /* horizontal offset controlled by --date-x so odd/even can place dates opposite cards */
+      --date-x: 72px; /* base offset (px) */
       position: absolute;
+        left: 50%; /* Center the date box */
       top: 18px;
       font-size: 0.9rem;
       font-weight: bold;
       color: #555;
       white-space: nowrap;
       background: #fff;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 8px 8px;
+      border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       z-index: 12;
+      transform: translateX(var(--date-x));
       opacity: 0;
       animation: date-appear 360ms ease forwards;
     }
 
     .vertical-timeline-element:nth-child(odd) > .timeline-date {
-      left: 45%;
+      --date-x: 100px; /* right of center for left-side cards */
     }
 
     .vertical-timeline-element:nth-child(even) > .timeline-date {
-      left: 55%;
+      --date-x: calc(-100% - 100px); /* left of center for right-side cards */
     }
 
     .vertical-timeline-element:hover > .timeline-date {
       color: #1e88e5;
+      transform: translateX(var(--date-x)) scale(1.06);
       box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     }
 
@@ -365,11 +370,11 @@ nav ul li a:hover {
 @keyframes date-appear {
   from {
     opacity: 0;
-    scale: 0.98;
+    transform: translateX(var(--date-x)) scale(0.98);
   }
   to {
     opacity: 1;
-    scale: 1;
+    transform: translateX(var(--date-x)) scale(1);
   }
 }
 
