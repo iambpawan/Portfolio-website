@@ -111,26 +111,20 @@ nav ul li a:hover {
    .section-title {
       font-size: 2rem;
       font-weight: bold;
-      color: #222; /* Darker text for the title */
+      color: #222;
       margin-bottom: 30px;
       position: relative;
-	  display: inline-block; /* Makes the title shrink-wrap its content */
-	  
- 
+  display: inline-block;
     }
 
-
-	.section-title::after {
+.section-title::after {
   content: '';
   display: block;
   height: 3px;
-  background-color: #007bff; /* Accent color */
+  background-color: #007bff;
   margin: 10px auto 0;
-  width: 100%; /* Match the width of the text */
- 
-
+  width: 100%;
 }
-	
 
     .cards-container {
       display: flex;
@@ -140,10 +134,10 @@ nav ul li a:hover {
     }
 
     .card {
-      background-color: #fff; /* Light card color */
-      border: 1px solid #ddd; /* Subtle light border */
+      background-color: #fff;
+      border: 1px solid #ddd;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 20px;
       text-align: left;
       width: 300px;
@@ -151,10 +145,9 @@ nav ul li a:hover {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
     }
    .card-title {
       font-size: 1.2rem;
@@ -162,26 +155,15 @@ nav ul li a:hover {
       color: #333;
       margin-bottom: 5px;
     }
-/* ------------------------------Project--------------------------------------------*/
 
     .card-content {
       padding: 20px;
       text-align: left;
     }
 
- /*   .card-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #007bff; 
-      margin-bottom: 10px;
-    } 
-	*/
-	
- 
-
     .card-description {
       font-size: 0.9rem;
-      color: #555; /* Subtle text color */
+      color: #555;
       margin-bottom: 15px;
     }
 
@@ -197,32 +179,22 @@ nav ul li a:hover {
       justify-content: center;
       font-size: 0.8rem;
       font-weight: bold;
-      color: #555; /* Dark text */
-      background-color: #e6f2ff; /* Light blue background */
+      color: #555;
+      background-color: #e6f2ff;
       border-radius: 20px;
       padding: 5px 10px;
-      border: 1px solid #555; /* Subtle blue border */
+      border: 1px solid #555;
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .tech-item:hover {
-      /*background-color: #2196f3;  /*Highlight blue background */
-      /*color: #fff; /* White text on hover */
-      transform: scale(1.1); /* Slightly enlarge on hover */
+      transform: scale(1.1);
     }
-	
-/* ------------------------------Certifications--------------------------------------------*/
 
     .card-icon {
       font-size: 2rem;
-      color: #007bff; /* Accent color for icons */
+      color: #007bff;
       margin-bottom: 10px;
-    }
-
-  
-    .card-description {
-      font-size: 0.9rem;
-      color: #666;
     }
 
     .external-link {
@@ -230,20 +202,15 @@ nav ul li a:hover {
       top: 15px;
       right: 15px;
       font-size: 1.5rem;
-      color: #ff5733; /* Accent color for external links */
+      color: #ff5733;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .external-link:hover {
-      color: #c70039; /* Darker hover color for links */
+      color: #c70039;
     }
-	
-/* ------------------------------Skills--------------------------------------------*/
 
-/* ------------------------------Skills--------------------------------------------*/
-
-  
     .vertical-timeline {
       position: relative;
       margin: 0 auto;
@@ -299,12 +266,10 @@ nav ul li a:hover {
       z-index: 5;
     }
 
-    /* Date box anchored to the timeline element (center line) */
+    /* Date box anchored to the timeline element */
     .vertical-timeline-element > .timeline-date {
-      /* use a CSS variable for horizontal offset so animations/hover keep same base X offset */
-      --date-x: 0px;
       position: absolute;
-      top: 18px; /* fixed pixel offset below icon */
+      top: 18px;
       font-size: 0.9rem;
       font-weight: bold;
       color: #555;
@@ -326,19 +291,8 @@ nav ul li a:hover {
       left: 55%;
     }
 
-    /* For left-side cards (odd), place date just right of center line (use positive --date-x)
-       For right-side cards (even), set --date-x to a negative calc so it sits left of center */
-    .vertical-timeline-element:nth-child(odd) > .timeline-date {
-      --date-x: 32px;
-    }
-
-    .vertical-timeline-element:nth-child(even) > .timeline-date {
-      --date-x: calc(-100% - 32px);
-    }
-
     .vertical-timeline-element:hover > .timeline-date {
       color: #1e88e5;
-      transform: translateX(var(--date-x)) translateY(-50%) scale(1.08);
       box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     }
 
@@ -346,7 +300,6 @@ nav ul li a:hover {
       float: left;
       text-align: right;
       margin-right: 60px;
-	  
     }
 
     .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
@@ -367,7 +320,6 @@ nav ul li a:hover {
     .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content::after {
       right: -15px;
       border-width: 10px 0 10px 15px;
-	  
       border-color: transparent transparent transparent #fff;
     }
 
@@ -375,7 +327,6 @@ nav ul li a:hover {
       left: -15px;
       border-width: 10px 15px 10px 0;
       border-color: transparent #fff transparent transparent;
-
     }
 
     .vertical-timeline-element-content:hover {
@@ -384,53 +335,6 @@ nav ul li a:hover {
 
     .vertical-timeline-element-icon:hover {
       background: #1e88e5;
-    }
-
-    .timeline-date-right,
-    .timeline-date-left {
-      position: absolute;
-      top: 50%;
-      left: 50%; /* anchor to center line */
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: #555;
-      white-space: nowrap;
-      transition: color 0.3s ease, transform 0.15s ease;
-      background: #fff;
-      padding: 4px 8px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      z-index: 12;
-      transform: translate(-120%, -50%); /* default place left of center */
-    }
-
-    /* Right-side dates: move a bit right of center so they sit between center and right card */
-    .timeline-date-right {
-      transform: translate(20%, -50%);
-    }
-
-    /* Left-side dates: keep left of center but slightly closer to card */
-    .timeline-date-left {
-      transform: translate(-120%, -50%);
-    }
-
-    /* Hover effect applied to the whole timeline element */
-    .vertical-timeline-element:hover .vertical-timeline-element-content {
-      background: #e6f2ff;
-    }
-
-    .vertical-timeline-element:hover .vertical-timeline-element-icon {
-      background: #1e88e5;
-    }
-
-    .vertical-timeline-element:hover .timeline-date-right {
-      color: #1e88e5;
-      transform: translate(20%, -50%) scale(1.08);
-    }
-
-    .vertical-timeline-element:hover .timeline-date-left {
-      color: #1e88e5;
-      transform: translate(-120%, -50%) scale(1.08);
     }
 
     .vertical-timeline-element-content h3 {
@@ -457,71 +361,28 @@ nav ul li a:hover {
       color: #888;
     }
 
-/* Responsive tweaks: adjust date-box offsets at different viewport widths */
-@media (min-width: 1200px) {
-  .timeline-date-left {
-    transform: translate(-160%, -50%); /* further left on very wide screens */
-  }
-  .timeline-date-right {
-    transform: translate(40%, -50%); /* further right on very wide screens */
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .timeline-date-left {
-    transform: translate(-140%, -50%);
-  }
-  .timeline-date-right {
-    transform: translate(32%, -50%);
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .timeline-date-left {
-    transform: translate(-110%, -50%);
-  }
-  .timeline-date-right {
-    transform: translate(24%, -50%);
-  }
-}
-
-/* Very wide screens: use fixed pixel offsets so dates never overlap cards */
-@media (min-width: 1400px) {
-  /* increase wide-screen fixed offset by +10px (was 140 -> now 150) */
-  .vertical-timeline-element:nth-child(odd) > .timeline-date {
-    --date-x: 150px;
-    transform: translateX(var(--date-x)) translateY(-50%);
-  }
-  .vertical-timeline-element:nth-child(even) > .timeline-date {
-    --date-x: calc(-100% - 150px);
-    transform: translateX(var(--date-x)) translateY(-50%);
-  }
-}
-
 /* Appear animation for date boxes */
 @keyframes date-appear {
   from {
     opacity: 0;
-    transform: translateX(var(--date-x)) translateY(-40%) scale(0.98);
+    scale: 0.98;
   }
   to {
     opacity: 1;
-    transform: translateX(var(--date-x)) translateY(-50%) scale(1);
+    scale: 1;
   }
 }
-	
+
         /* Footer */
         footer {
             background: #007c91;
             color: white;
             text-align: center;
             padding: 20px 10px;
-			margin-top:30px;
-			
+margin-top:30px;
         }
-		
-		
-	@media (max-width: 768px) {
+
+@media (max-width: 768px) {
   /* Navigation */
   nav {
     flex-direction: column;
@@ -600,7 +461,6 @@ nav ul li a:hover {
   .vertical-timeline-element-content::after {
     display: none;
   }
-
 
   .vertical-timeline-element > .timeline-date {
     position: static !important;
